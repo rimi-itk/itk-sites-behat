@@ -1,0 +1,45 @@
+default:
+  calls:
+    error_reporting: 16383 # E_ALL & ~E_USER_DREPRECATED
+
+  suites:
+    default:
+      contexts:
+        - Behat\MinkExtension\Context\MinkContext
+        - behatch:context:browser
+        - behatch:context:debug:
+            screenshotDir: "screenshots/develop"
+        - behatch:context:system
+        - behatch:context:table
+        - behatch:context:rest
+
+  extensions:
+    Behatch\Extension: ~
+    Behat\MinkExtension:
+      sessions:
+        default:
+          selenium2: ~
+      base_url:  'http://update.loop.vm'
+
+staging:
+  calls:
+    error_reporting: 16383 # E_ALL & ~E_USER_DREPRECATED
+
+  suites:
+    default:
+      contexts:
+        - Behat\MinkExtension\Context\MinkContext
+        - behatch:context:browser
+        - behatch:context:debug:
+            screenshotDir: "screenshots/staging"
+        - behatch:context:system
+        - behatch:context:table
+        - behatch:context:rest
+
+  extensions:
+    Behatch\Extension: ~
+    Behat\MinkExtension:
+      sessions:
+        default:
+          selenium2: ~
+      base_url:  'http://update.loop.vm'
